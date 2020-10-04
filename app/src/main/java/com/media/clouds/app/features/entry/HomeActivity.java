@@ -232,7 +232,9 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
 
     @Override
     protected void onDestroy() {
-        playback.releasePlayer();
+        if (playback != null) {
+            playback.releasePlayer();
+        }
         super.onDestroy();
     }
 
@@ -240,6 +242,8 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
     protected void onStop() {
         super.onStop();
         hideAudioPlaybackView();
-        playback.releasePlayer();
+        if (playback != null) {
+            playback.releasePlayer();
+        }
     }
 }

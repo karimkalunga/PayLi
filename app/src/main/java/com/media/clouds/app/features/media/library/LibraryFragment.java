@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -120,6 +121,46 @@ public class LibraryFragment extends Fragment implements INetworkStatus {
     }
 
     /**
+     * Display video section in main UI.
+     */
+    private void showVideoSection() {
+        LinearLayout videoLL = binding.videoContainer;
+        if (videoLL.getVisibility() == View.GONE) {
+            videoLL.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Hides video section from main UI.
+     */
+    private void hideVideoSection() {
+        LinearLayout videoLL = binding.videoContainer;
+        if (videoLL.getVisibility() == View.VISIBLE) {
+            videoLL.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Display audio section in main UI.
+     */
+    private void showAudioSection() {
+        LinearLayout audioLL = binding.audioContainer;
+        if (audioLL.getVisibility() == View.GONE) {
+            audioLL.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Hides audio section from main UI.
+     */
+    private void hideAudioSection() {
+        LinearLayout audioLL = binding.audioContainer;
+        if (audioLL.getVisibility() == View.VISIBLE) {
+            audioLL.setVisibility(View.GONE);
+        }
+    }
+
+    /**
      * Display retry text on main UI when network request fails.
      */
     private void showRetryView() {
@@ -189,13 +230,14 @@ public class LibraryFragment extends Fragment implements INetworkStatus {
     private void handleVideoContent(JSONArray response) throws Exception {
         int size = response.length();
         if (size > 0) {
+            showVideoSection();
             for (int i = 0; i < response.length(); i++) {
                 Map<String, String> map = getContentMap(response.getJSONObject(i));
                 videos.add(map);
             }
             videoAdapter.setData(videos);
         } else {
-            binding.videoContainer.setVisibility(View.GONE);
+            hideVideoSection();
         }
     }
 
@@ -207,13 +249,14 @@ public class LibraryFragment extends Fragment implements INetworkStatus {
     private void handleAudioContent(JSONArray response) throws Exception {
         int size = response.length();
         if (size > 0) {
+            showAudioSection();
             for (int i = 0; i < response.length(); i++) {
                 Map<String, String> map = getContentMap(response.getJSONObject(i));
                 audios.add(map);
             }
             audioAdapter.setData(audios);
         } else {
-            binding.audioContainer.setVisibility(View.GONE);
+            hideAudioSection();
         }
     }
 
@@ -235,6 +278,7 @@ public class LibraryFragment extends Fragment implements INetworkStatus {
 
     @Override
     public void notifySuccess(String tag, String response) {
+        hideShimmer();
         try {
             if (response != null && !TextUtils.isEmpty(response)) {
                 JSONObject rsp = new JSONObject(response);
@@ -242,8 +286,6 @@ public class LibraryFragment extends Fragment implements INetworkStatus {
             } else {
                 showNoContentView();
             }
-            hideShimmer();
-
         } catch (Exception e) {
             showRetryView();
             DialogImpl.getInstance(getContext())
