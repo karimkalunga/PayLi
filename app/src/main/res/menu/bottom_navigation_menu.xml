@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_audio"
+        android:icon="@drawable/ic_baseline_audiotrack"
+        android:title="@string/menu_audio"
+        android:orderInCategory="100"
+        android:checked="true" />
+    <item
+        android:id="@+id/nav_video"
+        android:icon="@drawable/ic_baseline_ondemand_video"
+        android:orderInCategory="101"
+        android:title="@string/menu_video" />
+    <item
+        android:id="@+id/nav_library"
+        android:icon="@drawable/ic_library"
+        android:orderInCategory="102"
+        android:title="@string/menu_my_library" />
+</menu>

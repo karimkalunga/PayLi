@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "113452493783",
+    "firebase_url": "https://clouds-music.firebaseio.com",
+    "project_id": "clouds-music",
+    "storage_bucket": "clouds-music.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113452493783:android:4b727a2be113c66afbb992",
+        "android_client_info": {
+          "package_name": "com.media.clouds.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113452493783-h357stu6pe90ook9f992o2rglvhuh2b4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.media.clouds.app",
+            "certificate_hash": "b5df7f963e33fe8b7a1b04ac592c7adde2e6ee6e"
+          }
+        },
+        {
+          "client_id": "113452493783-g8der9q69f0op6so0855t1ql2g6bl6p6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBANEdt0LkPfhZ6pnZv-3y9CCSa2XELZqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113452493783-g8der9q69f0op6so0855t1ql2g6bl6p6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

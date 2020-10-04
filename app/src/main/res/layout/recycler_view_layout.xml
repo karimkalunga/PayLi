@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/no_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dimen_14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/textColorPrimary"
+        android:layout_centerInParent="true"
+        android:text="@string/nothing_to_display"
+        android:drawablePadding="@dimen/dimen_8dp"
+        app:drawableTopCompat="@drawable/ic_baseline_block"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/tap_to_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?buttonBarButtonStyle"
+        android:layout_centerInParent="true"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/dimen_16sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/tap_to_retry"
+        tools:ignore="ContentDescription"
+        android:visibility="gone"/>
+
+</RelativeLayout>

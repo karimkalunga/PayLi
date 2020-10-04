@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/video_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimen_16dp">
+
+        <View
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:background="@color/textColorPrimary"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:columnCount="3"
+            android:rowCount="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="fill"
+                android:paddingStart="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingEnd="@dimen/dimen_8dp"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="0">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_150dp"
+                    app:cardBackgroundColor="@color/textColorPrimary"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="@dimen/dimen_6dp"
+                    android:layout_marginBottom="@dimen/dimen_8dp"/>
+
+                <View
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:background="@color/textColorPrimary"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="fill"
+                android:paddingStart="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingEnd="@dimen/dimen_8dp"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="1">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_150dp"
+                    app:cardBackgroundColor="@color/textColorPrimary"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="@dimen/dimen_6dp"
+                    android:layout_marginBottom="@dimen/dimen_8dp"/>
+
+                <View
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:background="@color/textColorPrimary"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="fill"
+                android:paddingStart="@dimen/dimen_16dp"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingEnd="@dimen/dimen_8dp"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="2">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_150dp"
+                    app:cardBackgroundColor="@color/textColorPrimary"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="@dimen/dimen_6dp"
+                    android:layout_marginBottom="@dimen/dimen_8dp"/>
+
+                <View
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:layout_height="@dimen/dimen_12dp"
+                    android:background="@color/textColorPrimary"/>
+
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/audio_container"
+        android:layout_below="@id/video_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dimen_16dp">
+
+        <View
+            android:layout_width="@dimen/dimen_50dp"
+            android:layout_height="@dimen/dimen_16dp"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:background="@color/textColorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_16dp">
+            <include
+                layout="@layout/audio_content_layout_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_16dp"/>
+            <include
+                layout="@layout/audio_content_layout_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_16dp"/>
+            <include
+                layout="@layout/audio_content_layout_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_16dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
