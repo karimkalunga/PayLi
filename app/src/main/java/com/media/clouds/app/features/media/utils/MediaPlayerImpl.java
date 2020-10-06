@@ -14,6 +14,7 @@ import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.media.clouds.app.R;
 import com.media.clouds.app.databinding.CustomAudioPlaybackViewBinding;
+import com.media.clouds.app.databinding.VideoPlaybackLayoutBinding;
 import com.media.clouds.app.utils.FormatterImpl;
 
 /**
@@ -32,6 +33,7 @@ public class MediaPlayerImpl {
     private SimpleExoPlayer player;
     private int currentWindow = 0;
     private Handler handler;
+    private boolean isAudio;
 
     /**
      * Listens to player event changes.
@@ -68,33 +70,35 @@ public class MediaPlayerImpl {
      * Sets progress to custom audio playback view.
      */
     private void setAudioProgress() {
-        SeekBar seekPlayerProgress = binding.mediaControllerProgress;
-        seekPlayerProgress.setProgress(0);
-        seekPlayerProgress.setMax((int) player.getDuration()/1000);
+        if (binding != null) {
+            SeekBar seekPlayerProgress = binding.mediaControllerProgress;
+            seekPlayerProgress.setProgress(0);
+            seekPlayerProgress.setMax((int) player.getDuration()/1000);
 
-        TextView txtCurrentTime = binding.playerTimeStart;
-        TextView txtEndTime = binding.playerTimeEnd;
-        FormatterImpl formatter = FormatterImpl.getInstance();
-        txtCurrentTime.setText(formatter.stringForTime((int) player.getCurrentPosition()));
-        txtEndTime.setText(formatter.stringForTime((int) player.getDuration()));
+            TextView txtCurrentTime = binding.playerTimeStart;
+            TextView txtEndTime = binding.playerTimeEnd;
+            FormatterImpl formatter = FormatterImpl.getInstance();
+            txtCurrentTime.setText(formatter.stringForTime((int) player.getCurrentPosition()));
+            txtEndTime.setText(formatter.stringForTime((int) player.getDuration()));
 
-        if (handler == null) {
-            handler = new Handler();
-        }
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (player != null && isPlaying) {
-                    seekPlayerProgress.setMax((int) player.getDuration()/1000);
-                    int mCurrentPosition = (int) player.getCurrentPosition() / 1000;
-                    seekPlayerProgress.setProgress(mCurrentPosition);
-                    txtCurrentTime.setText(formatter.stringForTime((int) player.getCurrentPosition()));
-                    txtEndTime.setText(formatter.stringForTime((int) player.getDuration()));
-
-                    handler.postDelayed(this, 1000);
-                }
+            if (handler == null) {
+                handler = new Handler();
             }
-        });
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (player != null && isPlaying) {
+                        seekPlayerProgress.setMax((int) player.getDuration()/1000);
+                        int mCurrentPosition = (int) player.getCurrentPosition() / 1000;
+                        seekPlayerProgress.setProgress(mCurrentPosition);
+                        txtCurrentTime.setText(formatter.stringForTime((int) player.getCurrentPosition()));
+                        txtEndTime.setText(formatter.stringForTime((int) player.getDuration()));
+
+                        handler.postDelayed(this, 1000);
+                    }
+                }
+            });
+        }
     }
 
     /**
@@ -120,59 +124,71 @@ public class MediaPlayerImpl {
      * Initializes audio custom playback view.
      */
     private void initCustomAudioPlaybackUI() {
-        SeekBar seekPlayerProgress = binding.mediaControllerProgress;
-        seekPlayerProgress.requestFocus();
-        seekPlayerProgress.setOnSeekBarChangeListener(new SeekBarChangeListenerImpl());
-        seekPlayerProgress.setMax(0);
-        seekPlayerProgress.setMax((int) player.getDuration()/1000);
-        binding.btnPlay.setOnClickListener(v -> setPlayPause(!isPlaying));
+        if (binding != null) {
+            SeekBar seekPlayerProgress = binding.mediaControllerProgress;
+            seekPlayerProgress.requestFocus();
+            seekPlayerProgress.setOnSeekBarChangeListener(new SeekBarChangeListenerImpl());
+            seekPlayerProgress.setMax(0);
+            seekPlayerProgress.setMax((int) player.getDuration()/1000);
+            binding.btnPlay.setOnClickListener(v -> setPlayPause(!isPlaying));
+        }
     }
 
     /**
-     *
+     * Plays or pauses audio content.
      * @param play audio playback status.
      */
     private void setPlayPause(boolean play) {
-        isPlaying = play;
-        player.setPlayWhenReady(play);
-        if(!isPlaying) {
-            binding.btnPlay.setImageResource(R.drawable.ic_baseline_play);
-        } else{
-            if (player.getPlaybackState() == Player.STATE_READY) {
-                setAudioProgress();
+        if (binding != null) {
+            isPlaying = play;
+            player.setPlayWhenReady(play);
+            if(!isPlaying) {
+                binding.btnPlay.setImageResource(R.drawable.ic_baseline_play);
+            } else{
+                if (player.getPlaybackState() == Player.STATE_READY) {
+                    setAudioProgress();
+                }
+                binding.btnPlay.setImageResource(R.drawable.ic_baseline_pause);
             }
-            binding.btnPlay.setImageResource(R.drawable.ic_baseline_pause);
         }
     }
 
     /**
      * Constructor.
      */
-    private MediaPlayerImpl(IEventListener callback, Context context, View view) {
+    private MediaPlayerImpl(IEventListener callback, Context context, View view, boolean isAudio) {
         this.callback = callback;
+        this.isAudio = isAudio;
+
         player = new SimpleExoPlayer.Builder(context).build();
         player.addListener(new EventListenerImpl());
-        binding = CustomAudioPlaybackViewBinding.bind(view);
+        if (isAudio) {
+            binding = CustomAudioPlaybackViewBinding.bind(view);
+        } else {
+            player.setRepeatMode(Player.REPEAT_MODE_OFF);
+            VideoPlaybackLayoutBinding vpb = VideoPlaybackLayoutBinding.bind(view);
+            vpb.container.playerView.setPlayer(player);
+        }
     }
 
     /**
      * Singleton.
      * @param context application context.
      * @param playerView audio player view.
+     * @param isAudio whether content is audio or not.
      * @return media player instance.
      */
     public static synchronized MediaPlayerImpl getInstance(
-            IEventListener callback, Context context, View playerView) {
-        return new MediaPlayerImpl(callback, context, playerView);
+            IEventListener callback, Context context, View playerView, boolean isAudio) {
+        return new MediaPlayerImpl(callback, context, playerView, isAudio);
     }
 
     /**
      * Initializes player and begin to play content.
      * @param contentUrl media content URL.
      * @param isBought whether media is purchased or not.
-     * @param isAudio whether media is audio.
      */
-    public void initAndPlay(String contentUrl, boolean isBought, boolean isAudio) {
+    public void initAndPlay(String contentUrl, boolean isBought) {
         long previewDuration = 30_000;
         MediaItem item = isBought
                 ? MediaItem.fromUri(contentUrl)
@@ -181,7 +197,7 @@ public class MediaPlayerImpl {
                     .setClipEndPositionMs(previewDuration)
                     .build();
         player.setMediaItem(item);
-        player.seekTo(currentWindow, playbackPosition + 1);
+        player.seekTo(currentWindow, playbackPosition);
         player.prepare();
 
         if (isAudio) {

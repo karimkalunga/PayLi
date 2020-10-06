@@ -10,20 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f49c06d-2f4b-4a4e-a865-14f780099df7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/entry/OnBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/cloudsmusic-android.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_playback_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/dal/Preferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/dal/Preferences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/entry/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/entry/HomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/entry/SplashActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/KeyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/KeyConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/MediaPlaybackImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/MediaPlaybackImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/MediaPlayerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/MediaPlayerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/Decorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/Decorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_arrow_right.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_get_started.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_content_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_content_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_view_bottom_sheet.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_view_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_view_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,10 +162,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="677" y="136" width="555" height="840" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1601985152142" />
-    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601993926315">
+    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601998153361">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1601993926315" />
+    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1601998153361" />
     <state x="540" y="301" width="830" height="511" key="AndroidCreateResourceFileDialog" timestamp="1601995438764">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -167,21 +174,25 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="783" y="318" width="343" height="485" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1601997115675" />
-    <state width="1852" height="549" key="GridCell.Tab.0.bottom" timestamp="1601993190962">
+    <state width="1852" height="455" key="GridCell.Tab.0.bottom" timestamp="1602014328414">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1852" height="549" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1601993190962" />
-    <state width="1852" height="549" key="GridCell.Tab.0.center" timestamp="1601993190961">
+    <state width="1852" height="455" key="GridCell.Tab.0.bottom/0.30.1920.1050@0.30.1920.1050" timestamp="1602014328414" />
+    <state width="1852" height="455" key="GridCell.Tab.0.center" timestamp="1602014328412">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1852" height="549" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1601993190961" />
-    <state width="1852" height="549" key="GridCell.Tab.0.left" timestamp="1601993190961">
+    <state width="1852" height="455" key="GridCell.Tab.0.center/0.30.1920.1050@0.30.1920.1050" timestamp="1602014328412" />
+    <state width="1852" height="455" key="GridCell.Tab.0.left" timestamp="1602014328411">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1852" height="549" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1601993190961" />
-    <state width="1852" height="549" key="GridCell.Tab.0.right" timestamp="1601993190962">
+    <state width="1852" height="455" key="GridCell.Tab.0.left/0.30.1920.1050@0.30.1920.1050" timestamp="1602014328411" />
+    <state width="1852" height="455" key="GridCell.Tab.0.right" timestamp="1602014328413">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state width="1852" height="549" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1601993190962" />
+    <state width="1852" height="455" key="GridCell.Tab.0.right/0.30.1920.1050@0.30.1920.1050" timestamp="1602014328413" />
+    <state x="582" y="30" width="745" height="1050" key="refactoring.ChangeSignatureDialog" timestamp="1602012753203">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="582" y="30" width="745" height="1050" key="refactoring.ChangeSignatureDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1602012753203" />
   </component>
 </project>

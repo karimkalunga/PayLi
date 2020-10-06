@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.media.clouds.app.R;
 import com.media.clouds.app.dal.Preferences;
 import com.media.clouds.app.databinding.HomeLayoutBinding;
-import com.media.clouds.app.databinding.VideoViewBottomSheetBinding;
+import com.media.clouds.app.databinding.VideoPlaybackLayoutBinding;
 import com.media.clouds.app.features.media.audio.AudioFragment;
 import com.media.clouds.app.features.media.utils.MediaPlaybackImpl;
 import com.media.clouds.app.features.media.library.LibraryFragment;
@@ -157,10 +157,12 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
      * Shows video playback view - bottom sheet.
      */
     private void showVideoPlaybackView() {
-        VideoViewBottomSheetBinding vvb = VideoViewBottomSheetBinding.inflate(getLayoutInflater());
+        VideoPlaybackLayoutBinding vvb = VideoPlaybackLayoutBinding.inflate(getLayoutInflater());
         videoPlaybackView = vvb.getRoot();
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(videoPlaybackView);
+        dialog.setOnCancelListener(d -> releasePlayback());
+        dialog.show();
     }
 
     /**
@@ -170,11 +172,18 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
      */
     private void handleVideoPlayback(String videoContent) throws Exception {
         showVideoPlaybackView();
+        releasePlayback();
+        playback = MediaPlaybackImpl.init(videoPlaybackView, videoContent, false);
+        playback.prepareAndPlay();
+    }
+
+    /**
+     * Triggers release playback.
+     */
+    private void releasePlayback() {
         if (playback != null) {
             playback.releasePlayer();
         }
-        playback = MediaPlaybackImpl.init(videoPlaybackView, videoContent);
-        playback.prepareAndPlay();
     }
 
     /**
@@ -184,10 +193,8 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
      */
     private void handleAudioPlayback(String audioContent) throws Exception {
         showAudioPlaybackView();
-        if (playback != null) {
-            playback.releasePlayer();
-        }
-        playback = MediaPlaybackImpl.init(audioPlaybackView, audioContent);
+        releasePlayback();
+        playback = MediaPlaybackImpl.init(audioPlaybackView, audioContent, true);
         playback.prepareAndPlay();
     }
 
@@ -205,9 +212,7 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
 
     @Override
     protected void onDestroy() {
-        if (playback != null) {
-            playback.releasePlayer();
-        }
+        releasePlayback();
         super.onDestroy();
     }
 
@@ -215,9 +220,7 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
     protected void onStop() {
         super.onStop();
         hideAudioPlaybackView();
-        if (playback != null) {
-            playback.releasePlayer();
-        }
+        releasePlayback();
     }
 
     /**
@@ -232,9 +235,7 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
          * @param itemId menu item ID.
          */
         private void handleNavItemClick(int itemId) {
-            if (playback != null) {
-                playback.releasePlayer();
-            }
+            releasePlayback();
             hideAudioPlaybackView();
 
             if (R.id.nav_audio == itemId) {

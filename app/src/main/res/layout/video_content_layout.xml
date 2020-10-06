@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="fill"
     android:layout_columnWeight="1"
@@ -35,8 +35,9 @@
         android:layout_height="wrap_content"
         android:lines="1"
         android:ellipsize="end"
-        android:textSize="@dimen/dimen_16sp"
-        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/dimen_14sp"
+        android:textColor="@color/colorAccent"
+        android:alpha="0.7"
         android:textStyle="bold"
         android:fontFamily="@font/roboto_regular"/>
 

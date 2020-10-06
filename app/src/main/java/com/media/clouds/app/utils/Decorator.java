@@ -40,11 +40,13 @@ public class Decorator extends RecyclerView.ItemDecoration {
 
             case GRID:
                 int column = position % spanCount;
-                outRect.left = column * spacing / spanCount;
-                outRect.right = spacing - (column + 1) * spacing / spanCount;
-                if (position >= spanCount) {
+                outRect.left = spacing - column * spacing / spanCount;
+                outRect.right = (column + 1) * spacing / spanCount;
+
+                if (position < spanCount) {
                     outRect.top = spacing;
                 }
+                outRect.bottom = spacing;
                 break;
 
             default:
