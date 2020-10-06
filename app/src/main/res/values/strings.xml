@@ -1,5 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY appname "Clouds Music">
+    ]>
 <resources>
-    <string name="app_name">Clouds Music</string>
+    <string name="app_name">&appname;</string>
     <string name="menu_audio">Audio</string>
     <string name="menu_video">Video</string>
     <string name="menu_profile">Profile</string>
@@ -62,4 +66,13 @@
     <string name="currency">TSh</string>
     <string name="buy_now">Buy Now</string>
     <string name="seek_time_0">00.00</string>
+    <string name="title_onboarding_welcome">Welcome to &appname;!</string>
+    <string name="subtitle_onboarding_welcome">All your favorite Gospel music contents in one place.</string>
+    <string name="title_onboarding_buy">Buy and make it your own</string>
+    <string name="subtitle_onboarding_buy">"Search, listen and buy gospel music from leading artists. It's very very simple."</string>
+    <string name="title_onboarding_account">Registration made easy</string>
+    <string name="subtitle_onboarding_account">Don\'t have an account? Don\'t worry, you can create your account in just 3 simple steps. Click the create account button now!</string>
+    <string name="create_account">Create account</string>
+    <string name="or">OR</string>
+    <string name="title_sign_in">Sign In</string>
 </resources>

@@ -226,4 +226,21 @@ public class Preferences {
     public String getPhoneNumber() {
         return prefs.getString(KeyConstants.PHONE, "n/a");
     }
+
+    /**
+     * Sets on-boarding view status.
+     * @param status whether on-boarding has been viewed or not - true/false.
+     */
+    public void setOnBoardingStatus(boolean status) {
+        editor.putBoolean(KeyConstants.ON_BOARD, status);
+        editor.apply();
+    }
+
+    /**
+     * Gets on-boarding view status.
+     * @return view status.
+     */
+    public boolean getOnBoardingStatus() {
+        return prefs.getBoolean(KeyConstants.ON_BOARD, false);
+    }
 }

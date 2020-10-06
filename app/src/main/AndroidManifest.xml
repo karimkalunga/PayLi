@@ -22,7 +22,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name=".features.entry.SplashActivity"
+            android:name=".features.entry.OnBoard"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>

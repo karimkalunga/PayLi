@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.media.clouds.app.R;
 import com.media.clouds.app.dal.Preferences;
 import com.media.clouds.app.databinding.HomeLayoutBinding;
+import com.media.clouds.app.databinding.VideoViewBottomSheetBinding;
 import com.media.clouds.app.features.media.audio.AudioFragment;
 import com.media.clouds.app.features.media.utils.MediaPlaybackImpl;
 import com.media.clouds.app.features.media.library.LibraryFragment;
@@ -36,8 +37,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeActivity extends AppCompatActivity implements DataPasser {
 
     private HomeLayoutBinding binding;
-    MediaPlaybackImpl playback = null;
+    private MediaPlaybackImpl playback = null;
     private View audioPlaybackView;
+    private View videoPlaybackView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,10 +153,35 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
         }
     }
 
-    private void handleVideoPlayback(String videoContent) {
-
+    /**
+     * Shows video playback view - bottom sheet.
+     */
+    private void showVideoPlaybackView() {
+        VideoViewBottomSheetBinding vvb = VideoViewBottomSheetBinding.inflate(getLayoutInflater());
+        videoPlaybackView = vvb.getRoot();
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(videoPlaybackView);
     }
 
+    /**
+     * Initiates and handles video playback.
+     * @param videoContent video data.
+     * @throws Exception JSON Exception.
+     */
+    private void handleVideoPlayback(String videoContent) throws Exception {
+        showVideoPlaybackView();
+        if (playback != null) {
+            playback.releasePlayer();
+        }
+        playback = MediaPlaybackImpl.init(videoPlaybackView, videoContent);
+        playback.prepareAndPlay();
+    }
+
+    /**
+     * Initiates and handles audio playback.
+     * @param audioContent audio data.
+     * @throws Exception JSON Exception.
+     */
     private void handleAudioPlayback(String audioContent) throws Exception {
         showAudioPlaybackView();
         if (playback != null) {
@@ -173,6 +200,23 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
             handleAudioPlayback(data);
         } else {
             handleVideoPlayback(data);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (playback != null) {
+            playback.releasePlayer();
+        }
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        hideAudioPlaybackView();
+        if (playback != null) {
+            playback.releasePlayer();
         }
     }
 
@@ -227,23 +271,6 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             handleNavItemClick(item.getItemId());
             return true;
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        if (playback != null) {
-            playback.releasePlayer();
-        }
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        hideAudioPlaybackView();
-        if (playback != null) {
-            playback.releasePlayer();
         }
     }
 }

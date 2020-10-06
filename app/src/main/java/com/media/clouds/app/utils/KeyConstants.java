@@ -63,4 +63,6 @@ public class KeyConstants {
     public static final String IS_BOUGHT = "purchase_status";
     public static final String VIDEO = "video";
     public static final String AUDIO = "audio";
+    public static final String ON_BOARD = "on_boarding";
+    public static final String POSITION = "position";
 }

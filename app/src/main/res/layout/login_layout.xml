@@ -27,19 +27,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/dimen_8dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="@string/title_welcome_back"
+                android:text="@string/title_sign_in"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/dimen_36sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textColorPrimary"
-                android:lineSpacingExtra="@dimen/dimen_3dp"
-                android:textSize="@dimen/dimen_16sp"
-                android:text="@string/login_subtitle"
+                android:textSize="@dimen/dimen_36sp"
                 android:layout_marginBottom="@dimen/dimen_24dp"/>
 
             <androidx.cardview.widget.CardView
