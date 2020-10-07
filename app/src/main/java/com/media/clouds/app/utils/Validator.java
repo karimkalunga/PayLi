@@ -114,4 +114,28 @@ public class Validator {
                 && params.getString(KeyConstants.PASSWORD).length() >= 8
                 && validatePhoneNumber(params.getString(KeyConstants.PHONE));
     }
+
+    /**
+     * Validates content data when purchasing.
+     *
+     * Checks whether JSON object contains valid keys.
+     * Checks for empty strings of data.
+     * Checks whether phone number is valid.
+     *
+     * @param params content data.
+     * @return true/false.
+     * @throws Exception SON exception.
+     */
+    public boolean isContentPurchaseDataValid(JSONObject params) throws Exception {
+        return params.has(KeyConstants.MSISDN)
+                && params.has(KeyConstants.USER_ID)
+                && params.has(KeyConstants.CONTENT_ID)
+                && params.has(KeyConstants.AMOUNT)
+                && params.has(KeyConstants.MNO)
+                && !TextUtils.isEmpty(params.getString(KeyConstants.USER_ID))
+                && !TextUtils.isEmpty(params.getString(KeyConstants.CONTENT_ID))
+                && !TextUtils.isEmpty(params.getString(KeyConstants.AMOUNT))
+                && !TextUtils.isEmpty(params.getString(KeyConstants.MNO))
+                && validatePhoneNumber(params.getString(KeyConstants.MSISDN));
+    }
 }

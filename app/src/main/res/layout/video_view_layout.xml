@@ -4,7 +4,7 @@
     android:id="@+id/enclosing_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/black"
+    android:background="@drawable/black_curved"
     android:keepScreenOn="true">
 
     <com.google.android.exoplayer2.ui.PlayerView

@@ -65,4 +65,5 @@ public class KeyConstants {
     public static final String AUDIO = "audio";
     public static final String ON_BOARD = "on_boarding";
     public static final String POSITION = "position";
+    public static final String CONTENT_DATA = "content_data";
 }

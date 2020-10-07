@@ -12,6 +12,10 @@ import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.Extractor;
+import com.google.android.exoplayer2.extractor.ExtractorsFactory;
+import com.google.android.exoplayer2.extractor.mp3.Mp3Extractor;
+import com.google.android.exoplayer2.extractor.mp4.Mp4Extractor;
 import com.media.clouds.app.R;
 import com.media.clouds.app.databinding.CustomAudioPlaybackViewBinding;
 import com.media.clouds.app.databinding.VideoPlaybackLayoutBinding;
@@ -42,7 +46,7 @@ public class MediaPlayerImpl {
         @Override
         public void onPlaybackStateChanged(int state) {
             if (state == ExoPlayer.STATE_ENDED) {
-                setPlayPause(false);
+                setAudioPlayPause(false);
                 player.seekTo(0);
             } else if (state == ExoPlayer.STATE_READY) {
                 setAudioProgress();
@@ -102,9 +106,16 @@ public class MediaPlayerImpl {
     }
 
     /**
+     * Pauses playback and reset time.
+     */
+    public void pause() {
+        player.pause();
+    }
+
+    /**
      * Handles SeekBar progress change.
      */
-    private class SeekBarChangeListenerImpl implements SeekBar.OnSeekBarChangeListener {
+    private class AudioSeekBarChangeListenerImpl implements SeekBar.OnSeekBarChangeListener {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (! fromUser) {
@@ -127,10 +138,10 @@ public class MediaPlayerImpl {
         if (binding != null) {
             SeekBar seekPlayerProgress = binding.mediaControllerProgress;
             seekPlayerProgress.requestFocus();
-            seekPlayerProgress.setOnSeekBarChangeListener(new SeekBarChangeListenerImpl());
+            seekPlayerProgress.setOnSeekBarChangeListener(new AudioSeekBarChangeListenerImpl());
             seekPlayerProgress.setMax(0);
             seekPlayerProgress.setMax((int) player.getDuration()/1000);
-            binding.btnPlay.setOnClickListener(v -> setPlayPause(!isPlaying));
+            binding.btnPlay.setOnClickListener(v -> setAudioPlayPause(!isPlaying));
         }
     }
 
@@ -138,7 +149,7 @@ public class MediaPlayerImpl {
      * Plays or pauses audio content.
      * @param play audio playback status.
      */
-    private void setPlayPause(boolean play) {
+    private void setAudioPlayPause(boolean play) {
         if (binding != null) {
             isPlaying = play;
             player.setPlayWhenReady(play);
@@ -159,16 +170,18 @@ public class MediaPlayerImpl {
     private MediaPlayerImpl(IEventListener callback, Context context, View view, boolean isAudio) {
         this.callback = callback;
         this.isAudio = isAudio;
+        ExtractorsFactory extractorsFactory;
 
-        player = new SimpleExoPlayer.Builder(context).build();
-        player.addListener(new EventListenerImpl());
         if (isAudio) {
+            extractorsFactory = () -> new Extractor[] {new Mp3Extractor()};
+            player = new SimpleExoPlayer.Builder(context, extractorsFactory).build();
             binding = CustomAudioPlaybackViewBinding.bind(view);
         } else {
-            player.setRepeatMode(Player.REPEAT_MODE_OFF);
-            VideoPlaybackLayoutBinding vpb = VideoPlaybackLayoutBinding.bind(view);
-            vpb.container.playerView.setPlayer(player);
+            extractorsFactory = () -> new Extractor[] {new Mp4Extractor()};
+            player = new SimpleExoPlayer.Builder(context, extractorsFactory).build();
+            VideoPlaybackLayoutBinding.bind(view).container.playerView.setPlayer(player);
         }
+        player.addListener(new EventListenerImpl());
     }
 
     /**
@@ -202,7 +215,7 @@ public class MediaPlayerImpl {
 
         if (isAudio) {
             initCustomAudioPlaybackUI();
-            setPlayPause(true);
+            setAudioPlayPause(true);
         } else {
             player.setPlayWhenReady(playWhenReady);
         }

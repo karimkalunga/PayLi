@@ -2,6 +2,7 @@ package com.media.clouds.app.features.entry;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -72,6 +73,9 @@ public class OnBoard extends AppCompatActivity implements DataPasser {
             goToSignIn();
         }
     }
+
+    @Override
+    public void notifyBottomSheetFragmentCreated(View view) {}
 
     /**
      * On-boarding view pager adapter.

@@ -1,11 +1,12 @@
 package com.media.clouds.app.features.entry;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,13 +14,14 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.media.clouds.app.R;
 import com.media.clouds.app.dal.Preferences;
 import com.media.clouds.app.databinding.HomeLayoutBinding;
-import com.media.clouds.app.databinding.VideoPlaybackLayoutBinding;
+import com.media.clouds.app.databinding.ProfileZeroInfoBottomSheetBinding;
 import com.media.clouds.app.features.media.audio.AudioFragment;
-import com.media.clouds.app.features.media.utils.MediaPlaybackImpl;
 import com.media.clouds.app.features.media.library.LibraryFragment;
+import com.media.clouds.app.features.media.utils.MediaPlaybackImpl;
 import com.media.clouds.app.features.media.video.VideoFragment;
 import com.media.clouds.app.features.profile.ProfileActivity;
 import com.media.clouds.app.utils.DataPasser;
@@ -36,10 +38,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class HomeActivity extends AppCompatActivity implements DataPasser {
 
-    private HomeLayoutBinding binding;
+    private static final String FLAG_CANCEL = "cancel";
     private MediaPlaybackImpl playback = null;
+    private HomeLayoutBinding binding;
     private View audioPlaybackView;
-    private View videoPlaybackView;
+    private String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,14 +69,13 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
      */
     @SuppressLint("InflateParams")
     private void showBottomSheet() {
-        View view = getLayoutInflater().inflate(
-                R.layout.profile_zero_info_bottom_sheet, null);
+        ProfileZeroInfoBottomSheetBinding binding =
+                ProfileZeroInfoBottomSheetBinding.inflate(getLayoutInflater());
         BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(view);
+        dialog.setContentView(binding.getRoot());
         dialog.show();
 
-        Button updateProfileButton = view.findViewById(R.id.edit_profile);
-        updateProfileButton.setOnClickListener(v -> {
+        binding.editProfile.setOnClickListener(v -> {
             showProfile(true);
             dialog.dismiss();
         });
@@ -157,24 +159,8 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
      * Shows video playback view - bottom sheet.
      */
     private void showVideoPlaybackView() {
-        VideoPlaybackLayoutBinding vvb = VideoPlaybackLayoutBinding.inflate(getLayoutInflater());
-        videoPlaybackView = vvb.getRoot();
-        BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(videoPlaybackView);
-        dialog.setOnCancelListener(d -> releasePlayback());
-        dialog.show();
-    }
-
-    /**
-     * Initiates and handles video playback.
-     * @param videoContent video data.
-     * @throws Exception JSON Exception.
-     */
-    private void handleVideoPlayback(String videoContent) throws Exception {
-        showVideoPlaybackView();
-        releasePlayback();
-        playback = MediaPlaybackImpl.init(videoPlaybackView, videoContent, false);
-        playback.prepareAndPlay();
+        BottomSheetFragment dialog = BottomSheetFragment.newInstance();
+        dialog.show(getSupportFragmentManager(), "Video Player Dialog Fragment");
     }
 
     /**
@@ -187,26 +173,55 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
     }
 
     /**
-     * Initiates and handles audio playback.
-     * @param audioContent audio data.
-     * @throws Exception JSON Exception.
+     * Initiates and handles video playback.
      */
-    private void handleAudioPlayback(String audioContent) throws Exception {
+    private void handleVideoPlayback() {
+        showVideoPlaybackView();
+        releasePlayback();
+    }
+
+    /**
+     * Initiates and handles audio playback.
+     */
+    private void handleAudioPlayback() {
         showAudioPlaybackView();
         releasePlayback();
-        playback = MediaPlaybackImpl.init(audioPlaybackView, audioContent, true);
-        playback.prepareAndPlay();
+        try {
+            playback = MediaPlaybackImpl.init(audioPlaybackView, content, true);
+            playback.prepareAndPlay();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void notifyDataPassed(String data) throws Exception {
-        JSONObject passedData = new JSONObject(data);
-        String tag = passedData.getString(KeyConstants.TAG);
-
-        if (KeyConstants.AUDIO_CLICKED.equals(tag)) {
-            handleAudioPlayback(data);
+    public void notifyDataPassed(String data) {
+        if (FLAG_CANCEL.equals(data)) {
+            releasePlayback();
         } else {
-            handleVideoPlayback(data);
+            this.content = data;
+            try {
+                JSONObject passedData = new JSONObject(content);
+                String tag = passedData.getString(KeyConstants.TAG);
+
+                if (KeyConstants.AUDIO_CLICKED.equals(tag)) {
+                    handleAudioPlayback();
+                } else {
+                    handleVideoPlayback();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void notifyBottomSheetFragmentCreated(View view) {
+        try {
+            playback = MediaPlaybackImpl.init(view, content, false);
+            playback.prepareAndPlay();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -272,6 +287,43 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             handleNavItemClick(item.getItemId());
             return true;
+        }
+    }
+
+    /**
+     * Handles creation of video playback bottom sheet.
+     */
+    public static class BottomSheetFragment extends BottomSheetDialogFragment {
+        private DataPasser passer;
+        private BottomSheetFragment() {}
+
+        /**
+         * Singleton.
+         * @return bottom sheet fragment instance.
+         */
+        public static BottomSheetFragment newInstance() {
+            return new BottomSheetFragment();
+        }
+
+        @Override
+        public void onAttach(@NonNull Context context) {
+            super.onAttach(context);
+            passer = (DataPasser) context;
+        }
+
+        @Override
+        public void setupDialog(@NonNull Dialog dialog, int style) {
+            View contentView = View.inflate(getContext(), R.layout.video_playback_layout, null);
+            dialog.setContentView(contentView);
+            ((View) contentView.getParent()).setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+            passer.notifyBottomSheetFragmentCreated(contentView);
+        }
+
+        @Override
+        public void onDestroy() {
+            passer.notifyDataPassed(FLAG_CANCEL);
+            super.onDestroy();
         }
     }
 }

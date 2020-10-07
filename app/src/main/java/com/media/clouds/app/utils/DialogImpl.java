@@ -54,6 +54,7 @@ public class DialogImpl {
         progressDialog.setMessage(message);
         progressDialog.setCancelable(isCancellable);
         progressDialog.setCanceledOnTouchOutside(isCancellable);
+        progressDialog.setOnCancelListener(dialog -> instance = null);
         progressDialog.show();
     }
 
@@ -64,7 +65,10 @@ public class DialogImpl {
     private void getAlertDialogSharedProps(String message) {
         alertDialog.setMessage(message);
         alertDialog.setCancelable(false);
-        alertDialog.setNegativeButton("Close", (dialog, which) -> dialog.dismiss());
+        alertDialog.setNegativeButton("Close", (dialog, which) ->{
+            dialog.dismiss();
+            instance = null;
+        });
     }
 
     /**

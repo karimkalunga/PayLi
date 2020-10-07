@@ -75,4 +75,13 @@
     <string name="create_account">Create account</string>
     <string name="or">OR</string>
     <string name="title_sign_in">Sign In</string>
+    <string name="title_payment">Payment</string>
+    <string name="title_select_wallet">Select Wallet</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="buy">Buy</string>
+    <string name="m_pesa">M-PESA</string>
+    <string name="tigo_pesa">Tigo pesa</string>
+    <string name="sample_phone_number">0627653478</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="invalid_payment_params">We could not validate your payment details. Please make sure you have filled all empty fields and provided a valid phone number.</string>
 </resources>

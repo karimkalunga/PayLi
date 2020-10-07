@@ -1,18 +1,23 @@
 package com.media.clouds.app.features.media.utils;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.media.clouds.app.R;
-import com.media.clouds.app.dal.Preferences;
 import com.media.clouds.app.databinding.AudioPlaybackLayoutBinding;
 import com.media.clouds.app.databinding.VideoPlaybackLayoutBinding;
-import com.media.clouds.app.features.media.payment.ContentPurchaseImpl;
+import com.media.clouds.app.features.media.payment.PaymentActivity;
+import com.media.clouds.app.utils.KeyConstants;
 import com.squareup.picasso.Picasso;
+
+import java.io.Serializable;
 
 /**
  * MediaPlaybackImpl.class
@@ -102,10 +107,13 @@ public class MediaPlaybackImpl implements IEventListener {
      */
     private void handlePurchase() {
         try {
-            String userId = Preferences.getInstance(context).getUserId();
-            String contentId = dataHolder.getId();
-            ContentPurchaseImpl.getInstance(contentId, userId).purchase();
-
+            Intent intent = new Intent(context, PaymentActivity.class);
+            intent.putExtra(KeyConstants.CONTENT_ID, dataHolder.getId());
+            intent.putExtra(KeyConstants.TITLE, dataHolder.getTitle());
+            intent.putExtra(KeyConstants.CONTENT_PRICE, dataHolder.getPrice());
+            intent.putExtra(KeyConstants.BANNER_LINK, dataHolder.getBannerLink(context));
+            intent.putExtra(KeyConstants.CREATOR_NAME, dataHolder.getAuthorName());
+            context.startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -180,13 +188,41 @@ public class MediaPlaybackImpl implements IEventListener {
 
     @Override
     public void onPlaybackStateChanged(int state) {
-        if (state == ExoPlayer.STATE_BUFFERING && !isAudio) {
-            if (videoBinding != null) {
-                videoBinding.container.progressBar.setVisibility(View.VISIBLE);
+        if (state == ExoPlayer.STATE_BUFFERING) {
+            if (!isAudio) {
+                showBufferingProgressBar();
             }
         } else {
-            if (videoBinding != null) {
-                videoBinding.container.progressBar.setVisibility(View.GONE);
+            hideBufferingProgressBar();
+
+            if (state == ExoPlayer.STATE_ENDED) {
+                if (!isAudio) {
+                    mediaPlayer.pause();
+                }
+            }
+        }
+    }
+
+    /**
+     * Hides buffering progress loader for video player.
+     */
+    private void hideBufferingProgressBar() {
+        if (videoBinding != null) {
+            ProgressBar progressBar = videoBinding.container.progressBar;
+            if (progressBar.getVisibility() == View.VISIBLE) {
+                progressBar.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    /**
+     * Shows buffering progress loader for video player.
+     */
+    private void showBufferingProgressBar() {
+        if (videoBinding != null) {
+            ProgressBar progressBar = videoBinding.container.progressBar;
+            if (progressBar.getVisibility() == View.GONE) {
+                progressBar.setVisibility(View.VISIBLE);
             }
         }
     }
