@@ -167,6 +167,8 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
      * Shows video playback view - bottom sheet.
      */
     private void showVideoPlaybackView() {
+        releasePlayback();
+        hideAudioPlaybackView();
         BottomSheetFragment dialog = BottomSheetFragment.newInstance();
         dialog.show(getSupportFragmentManager(), "Video Player Dialog Fragment");
     }
