@@ -19,8 +19,6 @@ import com.android.volley.VolleyError;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.media.clouds.app.R;
 import com.media.clouds.app.databinding.LibraryFragmentLayoutBinding;
-import com.media.clouds.app.features.media.audio.AudioContentAdapter;
-import com.media.clouds.app.features.media.video.VideoContentAdapter;
 import com.media.clouds.app.network.INetworkStatus;
 import com.media.clouds.app.network.NetworkRequest;
 import com.media.clouds.app.utils.Decorator;

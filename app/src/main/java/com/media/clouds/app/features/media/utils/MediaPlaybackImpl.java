@@ -2,7 +2,6 @@ package com.media.clouds.app.features.media.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -13,11 +12,10 @@ import com.google.android.exoplayer2.PlaybackParameters;
 import com.media.clouds.app.R;
 import com.media.clouds.app.databinding.AudioPlaybackLayoutBinding;
 import com.media.clouds.app.databinding.VideoPlaybackLayoutBinding;
+import com.media.clouds.app.features.media.library.AudioContentAdapter;
 import com.media.clouds.app.features.media.payment.PaymentActivity;
 import com.media.clouds.app.utils.KeyConstants;
 import com.squareup.picasso.Picasso;
-
-import java.io.Serializable;
 
 /**
  * MediaPlaybackImpl.class
@@ -30,8 +28,8 @@ public class MediaPlaybackImpl implements IEventListener {
     private VideoPlaybackLayoutBinding videoBinding;
     private ContentDataLayer dataHolder;
     private MediaPlayerImpl mediaPlayer;
-    private String contentUrl;
     private boolean isBought, isAudio;
+    private String contentUrl;
     private Context context;
 
     /**
@@ -55,12 +53,21 @@ public class MediaPlaybackImpl implements IEventListener {
      */
     private void bindDataToUI(VideoPlaybackLayoutBinding binding) throws Exception {
         contentUrl = dataHolder.getContentLink(context);
-        String price = context.getString(R.string.currency)
-                .concat(" ").concat(dataHolder.getPrice());
-
         binding.contentName.setText(dataHolder.getTitle());
-        binding.contentPrice.setText(price);
         binding.artistName.setText(dataHolder.getAuthorName());
+
+        if (dataHolder.hasIsDownloadedKey()) {
+            boolean isDownloaded = dataHolder.getOfflineStatus();
+            if (isDownloaded) {
+                AudioContentAdapter.setOfflineContentView(binding.contentPrice);
+            } else {
+                AudioContentAdapter.setOnlineContentView(binding.contentPrice);
+            }
+        } else {
+            String price = context.getString(R.string.currency)
+                    .concat(" ").concat(dataHolder.getPrice());
+            binding.contentPrice.setText(price);
+        }
     }
 
     /**
@@ -70,14 +77,23 @@ public class MediaPlaybackImpl implements IEventListener {
      */
     private void bindDataToUI(AudioPlaybackLayoutBinding binding) throws Exception {
         contentUrl = dataHolder.getContentLink(context);
-        String price = context.getString(R.string.currency)
-                .concat(" ").concat(dataHolder.getPrice());
-
         binding.contentName.setText(dataHolder.getTitle());
-        binding.contentPrice.setText(price);
         Picasso.get()
                 .load(dataHolder.getBannerLink(context))
                 .into(binding.contentImg);
+
+        if (dataHolder.hasIsDownloadedKey()) {
+            boolean isDownloaded = dataHolder.getOfflineStatus();
+            if (isDownloaded) {
+                AudioContentAdapter.setOfflineContentView(binding.contentPrice);
+            } else {
+                AudioContentAdapter.setOnlineContentView(binding.contentPrice);
+            }
+        } else {
+            String price = context.getString(R.string.currency)
+                    .concat(" ").concat(dataHolder.getPrice());
+            binding.contentPrice.setText(price);
+        }
     }
 
     /**

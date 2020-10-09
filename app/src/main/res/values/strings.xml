@@ -84,4 +84,6 @@
     <string name="sample_phone_number">0627653478</string>
     <string name="phone_number">Phone Number</string>
     <string name="invalid_payment_params">We could not validate your payment details. Please make sure you have filled all empty fields and provided a valid phone number.</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
 </resources>

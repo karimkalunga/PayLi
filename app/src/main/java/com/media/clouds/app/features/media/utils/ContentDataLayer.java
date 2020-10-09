@@ -128,4 +128,22 @@ public class ContentDataLayer {
     public boolean getPurchaseStatus() throws Exception {
         return content.getBoolean(KeyConstants.IS_BOUGHT);
     }
+
+    /**
+     * Gets downloaded status.
+     * @return true if content is downloaded, else false.
+     * @throws Exception JSON Exception.
+     */
+    public boolean getOfflineStatus() throws Exception {
+        return content.getBoolean(KeyConstants.IS_DOWNLOADED);
+    }
+
+    /**
+     * Checks whether content data contains IS_DOWNLOADED key.
+     * @return true/false.
+     * @throws Exception JSON Exception.
+     */
+    public boolean hasIsDownloadedKey() throws Exception {
+        return content.has(KeyConstants.IS_DOWNLOADED);
+    }
 }

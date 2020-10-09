@@ -10,7 +10,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f49c06d-2f4b-4a4e-a865-14f780099df7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/entry/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/entry/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/FullscreenVideoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/video/FullscreenVideoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/MediaDownload.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/library/DownloadsViewModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/library/LibraryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/library/LibraryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/ContentDataLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/ContentDataLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/MediaPlaybackImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/features/media/utils/MediaPlaybackImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/Decorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/Decorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/KeyConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/media/clouds/app/utils/KeyConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/audio_playback_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/audio_playback_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/library_fragment_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/library_fragment_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +85,11 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-nodpi" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.media.clouds.app.features.media.library" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.media.clouds.app.features.entry" />
@@ -144,18 +173,18 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="677" y="136" width="555" height="840" key="#com.intellij.ide.util.MemberChooser/0.30.1920.1050@0.30.1920.1050" timestamp="1602086897490" />
-    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602080983631">
+    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602220930947">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1602080983631" />
+    <state x="565" y="188" width="780" height="737" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1602220930947" />
     <state x="540" y="301" width="830" height="511" key="AndroidCreateResourceFileDialog" timestamp="1602083242462">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="540" y="301" width="830" height="511" key="AndroidCreateResourceFileDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1602083242462" />
-    <state x="783" y="318" width="346" height="497" key="AndroidCreateXmlResourceDialog" timestamp="1602089256781">
+    <state x="783" y="318" width="346" height="497" key="AndroidCreateXmlResourceDialog" timestamp="1602224253814">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="783" y="318" width="346" height="497" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1602089256781" />
+    <state x="783" y="318" width="346" height="497" key="AndroidCreateXmlResourceDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1602224253814" />
     <state x="634" y="181" width="630" height="753" key="FileChooserDialogImpl" timestamp="1602081072733">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>

@@ -32,8 +32,8 @@ public class Decorator extends RecyclerView.ItemDecoration {
         int position = parent.getChildAdapterPosition(view);
         switch (spacingDirection) {
             case VERTICAL:
-                outRect.top = 0;
-                outRect.bottom = 0;
+                outRect.top = spacing;
+                outRect.bottom = spacing;
                 outRect.right = spacing;
                 outRect.left = (position == 0) ? spacing : 0;
                 break;

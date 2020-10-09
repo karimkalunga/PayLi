@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -143,6 +145,12 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
     private void showAudioPlaybackView() {
         if (audioPlaybackView.getVisibility() == View.GONE) {
             audioPlaybackView.setVisibility(View.VISIBLE);
+            audioPlaybackView.findViewById(R.id.buy_content).setVisibility(View.VISIBLE);
+
+            TextView contentPriceTv = audioPlaybackView.findViewById(R.id.content_price);
+            contentPriceTv.setVisibility(View.VISIBLE);
+            contentPriceTv.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+            contentPriceTv.setBackgroundResource(R.drawable.button_primary_dark_stoke_accent);
         }
     }
 
@@ -231,12 +239,12 @@ public class HomeActivity extends AppCompatActivity implements DataPasser {
         super.onDestroy();
     }
 
-    @Override
+    /*@Override
     protected void onStop() {
         super.onStop();
         hideAudioPlaybackView();
         releasePlayback();
-    }
+    }*/
 
     /**
      * BottomNavigationItemSelectedListener.class
