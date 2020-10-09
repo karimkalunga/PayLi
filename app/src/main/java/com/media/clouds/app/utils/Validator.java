@@ -4,14 +4,18 @@ import android.text.TextUtils;
 
 import org.json.JSONObject;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Validator.class
+ *
  * This class validates inputs before processing.
  * For example; Full name, email address etc.
  */
 public class Validator {
-    private static Validator instance = null;
 
+    private static Validator instance = null;
     /**
      * Constructor.
      */
@@ -137,5 +141,89 @@ public class Validator {
                 && !TextUtils.isEmpty(params.getString(KeyConstants.AMOUNT))
                 && !TextUtils.isEmpty(params.getString(KeyConstants.MNO))
                 && validatePhoneNumber(params.getString(KeyConstants.MSISDN));
+    }
+
+    /**
+     * Validates profile image data during profile update.
+     *
+     * Checks whether JSON object contains valid keys.
+     * Checks for empty strings of data.
+     *
+     * @param param profile image data.
+     * @return true/false.
+     * @throws Exception JSON Exception.
+     */
+    public boolean isProfileImgContentValid(JSONObject param) throws Exception {
+        return param.has(KeyConstants.PHOTO)
+                && param.has(KeyConstants.USER_ID)
+                && !TextUtils.isEmpty(param.getString(KeyConstants.PHOTO))
+                && !TextUtils.isEmpty(param.getString(KeyConstants.USER_ID));
+    }
+
+    /**
+     * Validates input using regular expression.
+     *
+     * @param input to be validated i.e. name, email, etc.
+     * @param pattern regex pattern.
+     * @return true/false.
+     */
+    private boolean validateByRegex(String input, String pattern) {
+        Pattern pt = Pattern.compile(pattern);
+        Matcher matcher = pt.matcher(input);
+        return matcher.matches();
+    }
+
+    /**
+     * Validates user full name.
+     *
+     * Checks whether JSON object contains valid keys.
+     * Checks for empty strings of data.
+     * Checks whether name is in valid format.
+     *
+     * @param param user name data.
+     * @return true/false.
+     * @throws Exception JSON Exception.
+     */
+    public boolean isUpdateNameContentValid(JSONObject param) throws Exception {
+        final String nameRegex = "^[a-zA-z ]*$";
+        return param.has(KeyConstants.NAME)
+                && param.has(KeyConstants.USER_ID)
+                && !TextUtils.isEmpty(param.getString(KeyConstants.NAME))
+                && !TextUtils.isEmpty(param.getString(KeyConstants.USER_ID))
+                && validateByRegex(param.getString(KeyConstants.NAME), nameRegex);
+    }
+
+    /**
+     * Validates user email address.
+     *
+     * Checks whether JSON object contains valid keys.
+     * Checks for empty strings of data.
+     * Checks whether email address is in valid format.
+     *
+     * @param param email address data.
+     * @return true/false.
+     * @throws Exception JSON Exception.
+     */
+    public boolean isUpdateEmailContentValid(JSONObject param) throws Exception {
+        final String emailRegex = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        return param.has(KeyConstants.EMAIL)
+                && param.has(KeyConstants.USER_ID)
+                && !TextUtils.isEmpty(param.getString(KeyConstants.EMAIL))
+                && !TextUtils.isEmpty(param.getString(KeyConstants.USER_ID))
+                && validateByRegex(param.getString(KeyConstants.EMAIL), emailRegex);
+    }
+
+    /**
+     * Validates user physical location/address during profile update.
+     *
+     * @param param physical location/address data.
+     * @return true/false.
+     * @throws Exception JSON Exception.
+     */
+    public boolean isUpdateAddressContentValid(JSONObject param) throws Exception {
+        return param.has(KeyConstants.ADDRESS)
+                && param.has(KeyConstants.USER_ID)
+                && !TextUtils.isEmpty(param.getString(KeyConstants.ADDRESS))
+                && !TextUtils.isEmpty(param.getString(KeyConstants.USER_ID));
     }
 }

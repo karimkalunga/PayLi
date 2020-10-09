@@ -72,7 +72,7 @@ public class ContentDataLayer {
     public String getBannerLink(Context context) throws Exception {
         String bannerUrl = content.getString(KeyConstants.BANNER_LINK);
         if (!bannerUrl.isEmpty()) {
-            byte[] bytes = EncoDecode.getInstance(context).decodeBase64(bannerUrl);
+            byte[] bytes = EncoDecode.getInstance().decodeBase64(bannerUrl);
             return new String(bytes, StandardCharsets.UTF_8);
         }
         return null;
@@ -87,7 +87,7 @@ public class ContentDataLayer {
     public String getContentLink(Context context) throws Exception {
         String bannerUrl = content.getString(KeyConstants.CONTENT_LINK);
         if (!bannerUrl.isEmpty()) {
-            byte[] bytes = EncoDecode.getInstance(context).decodeBase64(bannerUrl);
+            byte[] bytes = EncoDecode.getInstance().decodeBase64(bannerUrl);
             return new String(bytes, StandardCharsets.UTF_8);
         }
         return null;
@@ -141,9 +141,35 @@ public class ContentDataLayer {
     /**
      * Checks whether content data contains IS_DOWNLOADED key.
      * @return true/false.
+     */
+    public boolean hasIsDownloadedKey() {
+        return content.has(KeyConstants.IS_DOWNLOADED);
+    }
+
+    /**
+     * Gets user full name.
+     * @return user full name.
      * @throws Exception JSON Exception.
      */
-    public boolean hasIsDownloadedKey() throws Exception {
-        return content.has(KeyConstants.IS_DOWNLOADED);
+    public String getProfileName() throws Exception {
+        return content.getString(KeyConstants.NAME);
+    }
+
+    /**
+     * Gets user valid email.
+     * @return user email.
+     * @throws Exception JSON Exception.
+     */
+    public String getProfileEmail() throws Exception {
+        return content.getString(KeyConstants.EMAIL);
+    }
+
+    /**
+     * Gets user physical location/address.
+     * @return user physical address/location.
+     * @throws Exception JSON Exception.
+     */
+    public String getProfilePhysicalAddress() throws Exception {
+        return content.getString(KeyConstants.ADDRESS);
     }
 }

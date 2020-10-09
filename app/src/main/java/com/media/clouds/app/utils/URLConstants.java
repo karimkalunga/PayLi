@@ -14,4 +14,5 @@ public class URLConstants {
     public static final String LIBRARY_CONTENTS_URL = BASE_URL.concat("/appsgateway/user_library");
     public static final String VIDEO_CONTENTS_URL = BASE_URL.concat("/appsgateway/contents_video");
     public static final String PAYMENT_URL = BASE_URL.concat("/appsgateway/user_pay");
+    public static final String UPDATE_PROFILE_URL = BASE_URL.concat("/appsgateway/user_update");
 }

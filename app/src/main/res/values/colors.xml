@@ -7,4 +7,7 @@
     <color name="black_overlay">#66000000</color>
     <color name="colorAccentDark">#FFDD8A</color>
     <color name="white_smoke">#F5F5F5</color>
+    <color name="ucrop_color_toolbar">@color/colorPrimary</color>
+    <color name="ucrop_color_statusbar">@color/colorPrimaryDark</color>
+    <color name="ucrop_color_widget_active">@color/colorAccent</color>
 </resources>
