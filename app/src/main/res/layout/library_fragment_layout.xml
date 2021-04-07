@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/video_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimen_20sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:text="@string/menu_video"
+                android:textColor="@color/colorAccent"/>
+
+            <include
+                android:id="@+id/video"
+                layout="@layout/recycler_view_layout"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/audio_container"
+            android:layout_below="@id/video_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_6dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimen_20sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dimen_16dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:text="@string/menu_audio"
+                android:textColor="@color/colorAccent"/>
+
+            <include
+                android:id="@+id/audio"
+                layout="@layout/recycler_view_layout"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/no_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_14sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/textColorPrimary"
+            android:layout_centerInParent="true"
+            android:text="@string/nothing_to_display"
+            android:drawablePadding="@dimen/dimen_8dp"
+            app:drawableTopCompat="@drawable/ic_baseline_block"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/tap_to_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?buttonBarButtonStyle"
+            android:layout_centerInParent="true"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/dimen_16sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/tap_to_retry"
+            tools:ignore="ContentDescription"
+            android:visibility="gone"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:shimmer_base_color="@color/colorPrimaryDark"
+            app:shimmer_base_alpha="0.2"
+            app:shimmer_highlight_alpha="0.4"
+            app:shimmer_auto_start="true"
+            android:visibility="gone">
+
+            <include
+                layout="@layout/library_content_layout_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

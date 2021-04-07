@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorPrimaryDark"/>
+            <stroke android:width="@dimen/dimen_2dp" android:color="@color/textColorPrimary"/>
+            <corners android:radius="@dimen/dimen_16dp"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_baseline_add_a_photo"
+        android:width="@dimen/dimen_30dp"
+        android:height="@dimen/dimen_30dp"
+        android:gravity="center"
+        tools:ignore="UnusedAttribute" />
+</layer-list>

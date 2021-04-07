@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/audio_playback_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:id="@+id/base_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="@dimen/dimen_60dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/content_img"
+                android:layout_width="@dimen/dimen_60dp"
+                android:layout_height="match_parent"
+                tools:ignore="ContentDescription"
+                android:alpha="0.8"
+                android:scaleType="centerCrop"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/dimen_8dp"
+            android:gravity="center_vertical">
+
+            <include
+                android:id="@+id/custom_audio_playback_view"
+                layout="@layout/custom_audio_playback_view"/>
+
+            <TextView
+                android:id="@+id/content_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/textColorPrimary"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:layout_marginBottom="@dimen/dimen_8dp"
+            android:layout_marginEnd="@dimen/dimen_8dp">
+
+            <TextView
+                android:id="@+id/content_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.7"
+                android:background="@drawable/button_primary_dark_stoke_accent"
+                android:fontFamily="@font/roboto_regular"
+                android:padding="@dimen/dimen_4dp"
+                android:paddingStart="@dimen/dimen_6dp"
+                android:paddingEnd="@dimen/dimen_12dp"
+                android:paddingBottom="@dimen/dimen_6dp"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/dimen_13sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/dimen_8dp"/>
+
+            <Button
+                android:id="@+id/buy_content"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_30dp"
+                style="?buttonBarButtonStyle"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/button_accent_curved"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/buy_now"
+                android:alpha="0.7"
+                android:textAllCaps="false"
+                android:paddingTop="@dimen/dimen_4dp"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:paddingStart="@dimen/dimen_12dp"
+                android:paddingEnd="@dimen/dimen_12dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_below="@id/base_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1dp"
+        android:background="@color/colorAccent"
+        android:alpha="0.7"/>
+
+</RelativeLayout>
+
+

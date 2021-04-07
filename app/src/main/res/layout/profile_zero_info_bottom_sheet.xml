@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="56dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dimen_16sp"
+        android:textColor="@color/textColorPrimary"
+        android:fontFamily="@font/roboto_regular"
+        android:lineSpacingExtra="@dimen/dimen_4dp"
+        android:text="@string/profile_zero_info_headline"
+        android:layout_marginBottom="@dimen/dimen_20dp"/>
+    
+    <Button
+        android:id="@+id/edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_40dp"
+        android:foreground="?selectableItemBackground"
+        android:textSize="@dimen/dimen_14sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/edit_my_profile"
+        android:background="@drawable/button_accent_curved"
+        style="?buttonBarButtonStyle"
+        tools:targetApi="m"
+        tools:ignore="UnusedAttribute" />
+
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_8dp"
+        android:background="@drawable/button_primary_dark_stoke_accent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/content_img_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:alpha="0.7"
+            app:cardCornerRadius="@dimen/dimen_6dp"
+            android:layout_marginEnd="@dimen/dimen_12dp">
+
+            <ImageView
+                android:id="@+id/content_img"
+                android:layout_width="@dimen/dimen_72dp"
+                android:layout_height="@dimen/dimen_72dp"
+                android:background="@drawable/button_primary"
+                tools:ignore="ContentDescription"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/promoted_badge"
+            android:layout_width="@dimen/dimen_24dp"
+            android:layout_height="@dimen/dimen_24dp"
+            tools:ignore="ContentDescription"
+            android:alpha="0.7"
+            android:src="@drawable/ic_baseline_promoted"
+            android:layout_alignParentEnd="true"/>
+
+        <LinearLayout
+            android:layout_toEndOf="@id/content_img_container"
+            android:layout_toStartOf="@id/promoted_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_12dp">
+
+            <TextView
+                android:id="@+id/content_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/dimen_14sp"
+                android:text="@string/sample_content_name"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginBottom="@dimen/dimen_2dp"/>
+
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/dimen_13sp"
+                android:text="@string/sample_artist_name"
+                android:textColor="@color/textColorPrimary"
+                android:textStyle="normal"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <TextView
+                android:id="@+id/content_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:alpha="0.5"
+                android:text="@string/sample_content_price"
+                android:paddingTop="@dimen/dimen_4dp"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:paddingStart="@dimen/dimen_12dp"
+                android:paddingEnd="@dimen/dimen_12dp"
+                android:background="@drawable/button_primary_dark_stoke_accent"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

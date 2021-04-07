@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/textColorPrimary"
+        android:padding="@dimen/dimen_3dp"
+        app:cardCornerRadius="@dimen/dimen_8dp"
+        app:cardElevation="0dp"
+        android:layout_margin="@dimen/dimen_16dp">
+
+        <include
+            android:id="@+id/container"
+            layout="@layout/video_view_layout"
+            android:layout_margin="@dimen/dimen_1dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/button_primary"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:layout_marginBottom="@dimen/dimen_16dp"
+        android:padding="@dimen/dimen_16dp"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="@dimen/dimen_16dp">
+
+            <TextView
+                android:id="@+id/content_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/colorAccent"
+                android:alpha="0.7"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/dimen_4dp"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/textColorPrimary"
+                android:layout_marginEnd="@dimen/dimen_16dp"
+                android:fontFamily="@font/roboto_regular"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/content_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="end"
+                android:alpha="0.7"
+                android:layout_marginBottom="@dimen/dimen_12dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/dimen_13sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/buy_content"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_30dp"
+                style="?buttonBarButtonStyle"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/button_accent_curved"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/buy_now"
+                android:textAllCaps="false"
+                android:alpha="0.7"
+                android:paddingTop="@dimen/dimen_4dp"
+                android:paddingBottom="@dimen/dimen_4dp"
+                android:paddingStart="@dimen/dimen_12dp"
+                android:paddingEnd="@dimen/dimen_12dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

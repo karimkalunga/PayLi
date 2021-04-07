@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:theme="@style/AppTheme.ToolbarTheme"
+            app:popupTheme="@style/AppTheme.AppBarOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:isScrollContainer="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_24dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/reg_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorAccent"
+                android:layout_marginBottom="@dimen/dimen_8dp"
+                android:textSize="@dimen/dimen_36sp" />
+
+            <TextView
+                android:id="@+id/reg_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorPrimary"
+                android:lineSpacingExtra="@dimen/dimen_3dp"
+                android:textSize="@dimen/dimen_16sp"
+                android:text="@string/login_subtitle"
+                android:layout_marginBottom="@dimen/dimen_24dp"
+                android:visibility="gone"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_24dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="@dimen/dimen_2dp"
+                    app:cardPreventCornerOverlap="true"
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardCornerRadius="@dimen/dimen_8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="@dimen/dimen_16dp"
+                        android:paddingEnd="@dimen/dimen_16dp"
+                        android:paddingTop="@dimen/dimen_8dp"
+                        android:paddingBottom="@dimen/dimen_8dp">
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/country_code_picker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:ccp_textSize="@dimen/dimen_14sp"
+                            app:ccp_showFlag="false"
+                            app:ccp_backgroundColor="@color/colorPrimaryDark"
+                            app:ccp_dialogTextColor="@color/textColorPrimary"
+                            app:ccp_setCountryByTimeZone="true"
+                            app:ccp_selectionDialogShowSearch="false"
+                            app:ccp_textColor="@color/textColorPrimary"
+                            android:layout_centerVertical="true"/>
+
+                        <EditText
+                            android:id="@+id/phone_number"
+                            android:layout_toEndOf="@id/country_code_picker"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|phone"
+                            android:textSize="@dimen/dimen_14sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:lines="1"
+                            android:textCursorDrawable="@null"
+                            android:maxLength="@integer/phone_number_length"
+                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:textColor="@color/textColorPrimary"
+                            android:textColorHint="@color/textColorPrimary"
+                            android:importantForAutofill="no"
+                            tools:ignore="LabelFor"
+                            android:layout_centerVertical="true"
+                            android:hint="@string/phone_number_hint"/>
+
+                        <EditText
+                            android:id="@+id/password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:textSize="@dimen/dimen_14sp"
+                            android:textColor="@color/textColorPrimary"
+                            android:textColorHint="@color/textColorPrimary"
+                            android:importantForAutofill="no"
+                            android:textCursorDrawable="@null"
+                            tools:ignore="LabelFor"
+                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:lines="1"
+                            android:visibility="gone"
+                            android:hint="@string/password_hint"
+                            android:drawablePadding="@dimen/dimen_16dp"
+                            android:drawableEnd="@drawable/ic_baseline_visibility_off"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <com.mukesh.OtpView
+                    android:id="@+id/otp_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:inputType="number"
+                    app:OtpItemWidth="@dimen/dimen_60dp"
+                    app:OtpItemHeight="@dimen/dimen_60dp"
+                    app:OtpItemSpacing="@dimen/dimen_12dp"
+                    android:itemBackground="@color/colorPrimaryDark"
+                    android:textColor="@color/colorAccent"
+                    app:OtpLineColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/dimen_24sp"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/roboto_regular"
+                    app:OtpItemCount="4"
+                    app:OtpItemRadius="@dimen/dimen_8dp"
+                    app:OtpViewType="rectangle"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/reg_button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_40dp"
+                style="?buttonBarButtonStyle"
+                android:foreground="?selectableItemBackground"
+                tools:ignore="UnusedAttribute"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/dimen_14sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginBottom="@dimen/dimen_16dp"
+                android:background="@drawable/button_accent_curved"/>
+
+            <TextView
+                android:id="@+id/legal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/dimen_14sp"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/register_legal_prefix"
+                android:layout_marginEnd="@dimen/dimen_4dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
